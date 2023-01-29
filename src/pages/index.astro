@@ -1,0 +1,16 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <main class='min-h-screen min-w-full bg-black flex justify-center items-center'>
+      <h1 class='text-4xl sm:text-6xl md:text-9xl'>DEVSOR.US</h1>
+    </main>
+  </body>
+</html>
