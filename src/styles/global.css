@@ -13,18 +13,17 @@ body {
   font-family: 'Grimoire', sans-serif;
   margin: auto;
   text-align: left;
-  --tw-bg-opacity: 1;
-  background-color: rgb(24 24 27 / var(--tw-bg-opacity));
+  background-color: #040404;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1.5;
   color: #fff;
-  overflow: hidden;
-  /* min-width: 100vw;
+  /* overflow: hidden;
+  min-width: 100vw;
   min-height: 100vh; */
 }
-/* 
+
 canvas {
-  width: 100% !important;
-  height: 100% !important;
-} */
+  /* width: 100% !important; */
+  /* height: 100% !important; */
+}
