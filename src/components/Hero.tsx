@@ -9,7 +9,8 @@ const Hero = () => {
             width: '100vw',
             height: '100vh',
           }}
-          scene='https://prod.spline.design/c0l34IxRyYOIiU4w/scene.splinecode'
+          // scene='https://prod.spline.design/c0l34IxRyYOIiU4w/scene.splinecode'
+          scene='scene.splinecode'
         />
       </div>
     </div>
