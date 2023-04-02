@@ -1,5 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
+import Hero from '../components/Hero';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -9,8 +10,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
-    <main class='min-h-screen min-w-full bg-black flex justify-center items-center'>
-      <h1 class='text-4xl sm:text-6xl md:text-9xl'>DEVSOR.US</h1>
-    </main>
+    <!-- <main class='w-screen h-screen flex justify-center items-center relative'> -->
+    <Hero client:load />
+    <!-- </main> -->
   </body>
 </html>
