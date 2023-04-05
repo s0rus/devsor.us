@@ -9,6 +9,31 @@
   -webkit-font-smoothing: antialiased;
 }
 
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/poppins-v20-latin-regular.eot');
+  src: url('/fonts/poppins-v20-latin-regular.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/poppins-v20-latin-regular.woff2') format('woff2'),
+    url('/fonts/poppins-v20-latin-regular.woff') format('woff'),
+    url('/fonts/poppins-v20-latin-regular.ttf') format('truetype'),
+    url('/fonts/poppins-v20-latin-regular.svg#Poppins') format('svg');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/poppins-v20-latin-700.eot');
+  src: url('/fonts/poppins-v20-latin-700.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/poppins-v20-latin-700.woff2') format('woff2'), url('/fonts/poppins-v20-latin-700.woff') format('woff'),
+    url('/fonts/poppins-v20-latin-700.ttf') format('truetype'),
+    url('/fonts/poppins-v20-latin-700.svg#Poppins') format('svg');
+}
+
 body {
   font-family: 'Grimoire', sans-serif;
   margin: auto;
