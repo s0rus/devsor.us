@@ -14,11 +14,17 @@ type Props = CollectionEntry<'projects'>;
 
 const projectObj = Astro.props;
 const { Content } = await projectObj.render();
-const { title } = projectObj.data;
+const { title, repoUrl, demoUrl } = projectObj.data;
 ---
 
 <ProjectsListLayout>
-  <Link to='/projects' title='go back' type='internal' iconBefore={true} />
+  <nav class='flex flex-row justify-between w-full'>
+    <Link to='/projects' title='go back' type='internal' iconBefore={true} />
+    <div class='flex flex-row gap-2'>
+      <Link to={repoUrl} title='repo' type='external' />
+      {demoUrl && <Link to={demoUrl} title='demo' type='external' />}
+    </div>
+  </nav>
   <h1 class='text-4xl mt-8 mb-4'>{title}</h1>
   <div class='mt-2'></div>
   <article class='prose prose-invert font-[Poppins]'>

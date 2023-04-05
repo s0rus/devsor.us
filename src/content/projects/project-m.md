@@ -1,6 +1,6 @@
 ---
 title: 'project-m'
-description: 'Watch videos from various platforms in sync with others!'
+repoUrl: 'https://github.com/s0rus/project-m'
 ---
 
 Project M is an app that lets you watch videos from different platforms (youtube, streamable etc.) in sync with other users. Videos are kept in a playlist and so every logged in user can add a video in advance. Users with administrator capabilities can skip, pause/play and rewind videos - that too will happen in sync with others. Also, when user joins and video is playing already, video time is going to adjust based on leader's player state.
