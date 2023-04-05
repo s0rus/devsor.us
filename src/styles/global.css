@@ -18,12 +18,7 @@ body {
   overflow-wrap: break-word;
   line-height: 1.5;
   color: #fff;
-  /* overflow: hidden;
+  overflow: hidden;
   min-width: 100vw;
-  min-height: 100vh; */
-}
-
-canvas {
-  /* width: 100% !important; */
-  /* height: 100% !important; */
+  min-height: 100vh;
 }
