@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Links from '../components/Links.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import MainLayout from '../layouts/MainLayout.astro';
-import heroImage from '../assets/hero2.jpg';
+import heroImage from '../assets/hero3.jpg';
 ---
 
 <!DOCTYPE html>
@@ -14,7 +14,13 @@ import heroImage from '../assets/hero2.jpg';
   <body>
     <MainLayout>
       <div class='w-full h-full'>
-        <img src={heroImage.src} alt='' width='100vw' height='100vh' class='w-full h-full object-contain' />
+        <img
+          src={heroImage.src}
+          alt=''
+          width='100vw'
+          height='100vh'
+          class='w-full h-full object-contain pointer-events-none'
+        />
       </div>
       <Links />
     </MainLayout>
