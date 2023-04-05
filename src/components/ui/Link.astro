@@ -1,0 +1,31 @@
+---
+import arrowUpRight from '../../assets/arrow-up-right.svg';
+import arrowRight from '../../assets/arrow-right.svg';
+
+interface Props {
+  to: string;
+  title: string;
+  type?: 'external' | 'internal';
+}
+
+const { to, title, type = 'external' } = Astro.props;
+const isExternal = type === 'external';
+---
+
+<a
+  href={to}
+  target={isExternal ? '_blank' : '_self'}
+  rel='noreferrer noopener'
+  class='hover:tracking-[0.2rem] transition-all ease-in-out text-white'
+>
+  <div class='flex flex-row border-b-2 pr-1 pl-2'>
+    <span>{title}</span>
+    {
+      isExternal ? (
+        <img src={arrowUpRight.src} alt='' width={arrowUpRight.width} height={arrowUpRight.height} />
+      ) : (
+        <img src={arrowRight.src} alt='' width={arrowRight.width} height={arrowRight.height} />
+      )
+    }
+  </div>
+</a>
