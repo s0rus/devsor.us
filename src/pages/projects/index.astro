@@ -1,30 +1,21 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
+import ProjectsListLayout from '../../layouts/ProjectsListLayout.astro';
+import Link from '../../components/ui/Link.astro';
 
 const projects = await getCollection('projects');
 ---
 
-<!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <main>
-      <section>
-        <h1>PROJECTS</h1>
-        <ul>
-          {
-            projects.map((project) => (
-              <li>
-                <a href={`/projects/${project.slug}/`}>{project.data.title}</a>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-    </main>
-  </body>
-</html>
+<ProjectsListLayout>
+  <Link to='/' title='go back' type='internal' iconBefore={true} />
+  <h1 class='text-4xl mt-8 mb-4'>PROJECTS:</h1>
+  <ul class='self-start flex flex-col gap-4 items-start'>
+    {
+      projects.map((project) => (
+        <li>
+          <Link to={`/projects/${project.slug}/`} title={project.data.title} type='internal' classes='uppercase' />
+        </li>
+      ))
+    }
+  </ul>
+</ProjectsListLayout>

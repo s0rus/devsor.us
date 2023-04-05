@@ -1,5 +1,7 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
+import Link from '../../components/ui/Link.astro';
+import ProjectsListLayout from '../../layouts/ProjectsListLayout.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -10,9 +12,16 @@ export async function getStaticPaths() {
 }
 type Props = CollectionEntry<'projects'>;
 
-const post = Astro.props;
-const { Content } = await post.render();
+const projectObj = Astro.props;
+const { Content } = await projectObj.render();
+const { title } = projectObj.data;
 ---
 
-<h1>{post.data.title}</h1>
-<Content />
+<ProjectsListLayout>
+  <Link to='/projects' title='go back' type='internal' iconBefore={true} />
+  <h1 class='text-4xl mt-8 mb-4'>{title}</h1>
+  <div class='mt-2'></div>
+  <article class='prose prose-invert font-[Poppins]'>
+    <Content />
+  </article>
+</ProjectsListLayout>

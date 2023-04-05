@@ -6,9 +6,11 @@ interface Props {
   to: string;
   title: string;
   type?: 'external' | 'internal';
+  iconBefore?: boolean;
+  classes?: string;
 }
 
-const { to, title, type = 'external' } = Astro.props;
+const { to, title, type = 'external', classes, iconBefore = false } = Astro.props;
 const isExternal = type === 'external';
 ---
 
@@ -16,15 +18,20 @@ const isExternal = type === 'external';
   href={to}
   target={isExternal ? '_blank' : '_self'}
   rel='noreferrer noopener'
-  class='hover:tracking-[0.2rem] transition-all ease-in-out text-white font-[Poppins] font-bold'
+  class={['hover:tracking-[0.2rem] transition-all ease-in-out text-white font-[Poppins] font-bold', classes].join(' ')}
 >
-  <div class='flex flex-row items-center border-b-2 pl-2'>
-    <span>{title}</span>
+  <div class={`flex flex-row items-center border-b-2 ${!iconBefore && 'pl-2'}`}>
     {
-      isExternal ? (
-        <img src={arrowUpRight.src} alt='' width={arrowUpRight.width} height={arrowUpRight.height} />
+      iconBefore ? (
+        <>
+          <img src={isExternal ? arrowUpRight.src : arrowRight.src} alt='' class='w-4 h-4 ml-2 rotate-180' />
+          <span>{title}</span>
+        </>
       ) : (
-        <img src={arrowRight.src} alt='' width={arrowRight.width} height={arrowRight.height} />
+        <>
+          <span>{title}</span>
+          <img src={isExternal ? arrowUpRight.src : arrowRight.src} alt='' class='w-4 h-4 mr-2' />
+        </>
       )
     }
   </div>

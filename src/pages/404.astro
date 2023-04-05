@@ -1,0 +1,12 @@
+---
+import Link from '../components/ui/Link.astro';
+import ErrorLayout from '../layouts/ErrorLayout.astro';
+---
+
+<ErrorLayout>
+  <div class='flex flex-col prose prose-invert mb-8'>
+    <p>404</p>
+    <h1>You have lost your way!</h1>
+  </div>
+  <Link to='/' title='go back' type='internal' iconBefore={true} classes='self-start' />
+</ErrorLayout>
