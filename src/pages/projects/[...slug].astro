@@ -27,7 +27,14 @@ const { title, repoUrl, demoUrl } = projectObj.data;
   </nav>
   <h1 class='text-4xl mt-8 mb-4'>{title}</h1>
   <div class='mt-2'></div>
-  <article class='prose prose-invert font-[Poppins]'>
+  <article class='prose prose-invert'>
     <Content />
   </article>
 </ProjectsListLayout>
+
+<style>
+  article,
+  article * {
+    font-family: 'Poppins', sans-serif;
+  }
+</style>
