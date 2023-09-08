@@ -1,7 +1,7 @@
 ---
-title: 'piotrmol.me'
-repoUrl: 'https://github.com/s0rus/piotrmol.me'
-demoUrl: 'https://piotrmol-me.vercel.app/'
+title: "piotrmol.me"
+repoUrl: "https://github.com/s0rus/piotrmol.me"
+demoUrl: "https://piotrmol-me.vercel.app/"
 ---
 
 Old website of mine, it was a great experience to gather inspiration from other websites and create one with my spin on it.

@@ -1,6 +1,6 @@
 ---
-title: 'Discord Map'
-repoUrl: 'https://github.com/s0rus/discord-map'
+title: "Discord Map"
+repoUrl: "https://github.com/s0rus/discord-map"
 ---
 
 This app's purpose is to give a certain discord community a way to know eachother better
