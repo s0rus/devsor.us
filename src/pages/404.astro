@@ -1,12 +1,45 @@
 ---
-import Link from '../components/ui/Link.astro';
-import ErrorLayout from '../layouts/ErrorLayout.astro';
+import { Image } from "astro:assets";
+import CardLink from "../components/ui/card-link";
+import ErrorLayout from "../layouts/error-layout.astro";
+import { ROUTES } from "../lib/consts";
+
+import glossyKnot from "../assets/glossy_knot.webp";
+import { Icon } from "../components/ui/icon";
 ---
 
 <ErrorLayout>
-  <div class='flex flex-col prose prose-invert mb-8'>
-    <p>404</p>
-    <h1>You have lost your way!</h1>
+  <div>
+    <div class="relative mb-8 flex flex-col">
+      <p class="mb-8 font-secondary text-6xl">404</p>
+      <h1 class="text-4xl font-bold">I think there's been a glitch</h1>
+      <p class="text-lg text-white/40">
+        A brief interruption, a slight malfunction
+      </p>
+      <div class="blob absolute inset-0 -z-[1] opacity-40"></div>
+    </div>
+    <div
+      class="absolute inset-0 left-[65%] top-1/2 w-24 -translate-x-[50%] -translate-y-[50%]"
+    >
+      <Image
+        src={glossyKnot}
+        alt="Glossy rock"
+        loading="eager"
+        class="pointer-events-none animate-float"
+      />
+    </div>
+    <div class="absolute inset-0 left-1/2 top-1/3 overflow-hidden">
+      <Icon.sparklyCircle className="text-white/10" />
+    </div>
   </div>
-  <Link to='/' title='go back' type='internal' iconBefore={true} classes='self-start' />
+  <CardLink
+    title="GO BACK"
+    cardProps={{
+      className: "sm:h-24",
+    }}
+    followIconKey="arrowLeft"
+    href={ROUTES.home}
+    client:load
+  />
+  <span class="mt-10 text-white/5"> #swiftie</span>
 </ErrorLayout>

@@ -3,5 +3,11 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "react"
-  }
+  },
+  "include": [
+    "src/**/*",
+    "./.eslintrc.cjs",
+    "./prettier.config.cjs",
+    "./tailwind.config.cjs"
+  ]
 }

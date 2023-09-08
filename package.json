@@ -1,7 +1,7 @@
 {
   "name": "devsor.us",
   "type": "module",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "astro dev --host",
@@ -11,24 +11,29 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/image": "^0.16.4",
-    "@astrojs/mdx": "^0.15.1",
-    "@astrojs/react": "^2.1.0",
-    "@astrojs/rss": "^2.1.0",
-    "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/tailwind": "^3.0.0",
-    "@astrojs/vercel": "^3.2.1",
-    "@splinetool/react-spline": "^2.2.6",
-    "@splinetool/runtime": "^0.9.277",
-    "@types/react": "^18.0.31",
-    "@types/react-dom": "^18.0.11",
-    "astro": "^2.1.9",
+    "@astrojs/mdx": "^1.0.0",
+    "@astrojs/react": "^3.0.0",
+    "@astrojs/rss": "^3.0.0",
+    "@astrojs/sitemap": "^3.0.0",
+    "@astrojs/tailwind": "^5.0.0",
+    "@astrojs/vercel": "^4.0.2",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "astro": "^3.0.5",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.274.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.2.4",
-    "typescript": "^5.0.3"
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.9"
+    "@tailwindcss/typography": "^0.5.9",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "eslint-plugin-astro": "^0.29.0",
+    "prettier-plugin-astro": "^0.12.0",
+    "prettier-plugin-tailwindcss": "^0.5.4"
   }
 }

@@ -1,0 +1,16 @@
+---
+import BaseHead from "../components/base-head.astro";
+import { SITE_DESCRIPTION, SITE_TITLE_ERROR } from "../lib/consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE_ERROR} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <main class="container flex h-screen w-screen flex-col justify-center">
+      <slot />
+    </main>
+  </body>
+</html>

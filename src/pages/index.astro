@@ -1,18 +1,27 @@
 ---
-import Links from '../components/Links.astro';
-import heroImage from '../assets/pm_hero.jpg';
-import MainLayout from '../layouts/MainLayout.astro';
+import Footer from "../components/footer.astro";
+import Hero from "../components/hero.astro";
+import Links from "../components/links.astro";
+import MainLayout from "../layouts/main-layout.astro";
+
+import { Image } from "astro:assets";
+import glossyRock from "../assets/glossy_rock.webp";
+import { Icon } from "../components/ui/icon";
 ---
 
 <MainLayout>
-  <div class='w-full h-full'>
-    <img
-      src={heroImage.src}
-      alt=''
-      width='100vw'
-      height='100vh'
-      class='w-full h-full object-contain pointer-events-none'
-    />
-  </div>
+  <Hero />
   <Links />
+  <Footer>
+    <Image
+      src={glossyRock}
+      alt="Glossy rock"
+      loading="eager"
+      class="pointer-events-none animate-float"
+      width={102}
+      height={102}
+      slot="image"
+    />
+    <Icon.outlinedStar className="text-white/10" slot="background" />
+  </Footer>
 </MainLayout>

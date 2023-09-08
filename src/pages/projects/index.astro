@@ -1,21 +1,67 @@
 ---
-import { getCollection } from 'astro:content';
-import ProjectsListLayout from '../../layouts/ProjectsListLayout.astro';
-import Link from '../../components/ui/Link.astro';
+import { getCollection } from "astro:content";
+import Footer from "../../components/footer.astro";
+import CardLink from "../../components/ui/card-link";
+import ProjectsListLayout from "../../layouts/project-list-layout.astro";
+import { ROUTES } from "../../lib/consts";
 
-const projects = await getCollection('projects');
+const projects = await getCollection("projects");
+
+import { Image } from "astro:assets";
+import glossyBall from "../../assets/glossy_ball.webp";
+import { Icon } from "../../components/ui/icon";
 ---
 
 <ProjectsListLayout>
-  <Link to='/' title='go back' type='internal' iconBefore={true} />
-  <h1 class='text-4xl mt-8 mb-4'>PROJECTS:</h1>
-  <ul class='self-start flex flex-col gap-4 items-start'>
+  <nav>
+    <CardLink
+      title="GO BACK"
+      cardProps={{
+        className: "sm:h-24",
+      }}
+      followIconKey="arrowLeft"
+      href={ROUTES.home}
+      client:load
+    />
+  </nav>
+  <div class="relative">
+    <h1 class="mb-4 mt-8 text-6xl font-bold">PROJECTS:</h1>
+    <div class="blob absolute inset-0 -z-[1] rotate-180 animate-pulse-slow">
+    </div>
+  </div>
+  <ul
+    class="flex flex-col items-stretch justify-between gap-4 sm:flex-row sm:flex-wrap"
+  >
     {
       projects.map((project) => (
-        <li>
-          <Link to={`/projects/${project.slug}/`} title={project.data.title} type='internal' classes='uppercase' />
+        <li class="w-full sm:w-[calc(50%-16px)]">
+          <CardLink
+            className="h-full"
+            title={project.data.title}
+            cardProps={{
+              className: "h-full",
+            }}
+            followIconKey="arrowRight"
+            href={`${ROUTES.projects}/${project.slug}`}
+            client:load
+          />
         </li>
       ))
     }
   </ul>
+  <Footer>
+    <Image
+      src={glossyBall}
+      alt="Glossy ball"
+      loading="eager"
+      class="pointer-events-none mt-4 animate-float"
+      width={102}
+      height={102}
+      slot="image"
+    />
+    <Icon.sparklyCircleTilted
+      className="text-white/10 w-1/3 h-1/3"
+      slot="background"
+    />
+  </Footer>
 </ProjectsListLayout>

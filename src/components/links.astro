@@ -1,0 +1,38 @@
+---
+import { GITHUB_URL, LINKEDIN_URL, ROUTES } from "../lib/consts";
+import CardLink from "./ui/card-link";
+---
+
+<div class="flex w-full flex-col gap-8 sm:flex-row">
+  <div class="flex flex-1 flex-col gap-4">
+    <CardLink
+      title="github"
+      iconKey="gitHub"
+      followIconKey="arrowUpRight"
+      href={GITHUB_URL}
+      target="_blank"
+      client:load
+    />
+    <CardLink
+      title="linkedin"
+      iconKey="linkedIn"
+      followIconKey="arrowUpRight"
+      href={LINKEDIN_URL}
+      target="_blank"
+      client:load
+    />
+  </div>
+  <div class="flex-1">
+    <CardLink
+      title="projects"
+      iconKey="projects"
+      followIconKey="arrowRight"
+      className="h-full"
+      cardProps={{
+        className: "sm:h-full",
+      }}
+      href={ROUTES.projects}
+      client:load
+    />
+  </div>
+</div>
