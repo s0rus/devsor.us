@@ -34,4 +34,11 @@ const { title, description, image = "/social-card.jpg" } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
+<link rel="stylesheet" href="/fonts/Grimoire.ttf" as="font" />
+<link
+  rel="stylesheet"
+  href="/fonts/Inter-VariableFont_slnt,wght.ttf"
+  as="font"
+/>
+
 <ViewTransitions />

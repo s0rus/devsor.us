@@ -3,17 +3,22 @@
 @tailwind utilities;
 
 @layer base {
-  @fontface {
+  @font-face {
     font-family: "Grimoire";
-    src:
-      url("/fonts/Grimoire.ttf"),
-      url("/fonts/Grimoire.woff") format("woff"),
-      url("/fonts/Grimoire.woff2") format("woff2");
+    src: url("/fonts/Grimoire.ttf");
   }
 
-  @fontface {
+  @font-face {
     font-family: "Inter";
     src: url("/fonts/Inter-VariableFont_slnt,wght.ttf");
+  }
+
+  :root {
+    --blue: #7b67a3;
+    --pink: #aa0c60;
+
+    --font-main: "Inter";
+    --font-secondary: "Grimoire";
   }
 
   body {
@@ -23,14 +28,6 @@
   article {
     @apply font-main;
   }
-}
-
-:root {
-  --blue: #7b67a3;
-  --pink: #aa0c60;
-
-  --font-main: "Inter";
-  --font-secondary: "Grimoire";
 }
 
 .link-card:before {
