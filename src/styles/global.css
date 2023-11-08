@@ -9,15 +9,15 @@
   }
 
   @font-face {
-    font-family: "Inter";
-    src: url("/fonts/Inter-VariableFont_slnt,wght.ttf");
+    font-family: "Geist";
+    src: url("/fonts/GeistVariableVF.woff2");
   }
 
   :root {
     --blue: #7b67a3;
     --pink: #aa0c60;
 
-    --font-main: "Inter";
+    --font-main: "Geist";
     --font-secondary: "Grimoire";
   }
 
