@@ -24,6 +24,8 @@ const { Content } = await projectObj.render();
 const { title, description, repoUrl, demoUrl } = projectObj.data;
 
 const BASE_URL = new URL(Astro.request.url).origin;
+
+export const prerender = true;
 ---
 
 <ArticleLayout>

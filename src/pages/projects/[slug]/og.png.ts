@@ -1,5 +1,7 @@
 import { ImageResponse } from "@vercel/og";
 import { getCollection, type CollectionEntry } from "astro:content";
+import fs from "fs";
+import path from "path";
 import type { JSXElementConstructor, ReactElement } from "react";
 import { capitalizeWord } from "../../../lib/utils";
 
@@ -50,16 +52,13 @@ export async function GET({ props, request }: Props) {
     fonts: [
       {
         name: "Geist",
-        data: await fetch(new URL(`${BASE_URL}/fonts/Geist-Regular.otf`)).then(
-          (res) => res.arrayBuffer(),
-        ),
+        data: fs.readFileSync(path.resolve("./fonts/Geist-Regular.otf")).buffer,
         style: "normal",
       },
       {
         name: "GeistMono",
-        data: await fetch(
-          new URL(`${BASE_URL}/fonts/GeistMono-Regular.otf`),
-        ).then((res) => res.arrayBuffer()),
+        data: fs.readFileSync(path.resolve("./fonts/GeistMono-Regular.otf"))
+          .buffer,
         style: "normal",
       },
     ],
