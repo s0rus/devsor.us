@@ -3,6 +3,8 @@
 // import type { JSXElementConstructor, ReactElement } from "react";
 // import { capitalizeWord } from "../../../lib/utils";
 
+import { getCollection } from "astro:content";
+
 // interface Props {
 //   params: { slug: string };
 //   props: { project: CollectionEntry<"projects"> };
@@ -60,10 +62,10 @@
 //   });
 // }
 
-// export async function getStaticPaths() {
-//   const projects = await getCollection("projects");
-//   return projects.map((project) => ({
-//     params: { slug: project.slug },
-//     props: { project },
-//   }));
-// }
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
