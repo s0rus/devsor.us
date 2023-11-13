@@ -1,12 +1,22 @@
 ---
-import BaseHead from "../components/base-head.astro";
-import { SITE_DESCRIPTION, SITE_TITLE_ERROR } from "../lib/consts";
+import {
+  CANONICAL_URL,
+  SITE_DESCRIPTION,
+  SITE_TITLE_ERROR,
+} from "../lib/consts";
+import Metadata from "../lib/metadata.astro";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE_ERROR} description={SITE_DESCRIPTION} />
+    <Metadata
+      title={SITE_TITLE_ERROR}
+      description={SITE_DESCRIPTION}
+      canonicalUrl={CANONICAL_URL}
+      image="/og-404.png"
+      type="website"
+    />
   </head>
   <body>
     <main class="container flex h-screen w-screen flex-col justify-center">

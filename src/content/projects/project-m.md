@@ -1,5 +1,6 @@
 ---
-title: "project-m"
+title: "Project M"
+description: "App that allows users watch videos from various platforms in sync."
 repoUrl: "https://github.com/s0rus/project-m"
 ---
 

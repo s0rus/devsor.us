@@ -1,5 +1,6 @@
 ---
 title: "kickkit"
+description: "Browser extension to enhance user experience on kick.com"
 repoUrl: "https://github.com/s0rus/kick-kit"
 demoUrl: "https://kickkit.devsor.us/"
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Discord Map"
+description: "App that allowed users from community save their location on a map."
 repoUrl: "https://github.com/s0rus/discord-map"
 ---
 

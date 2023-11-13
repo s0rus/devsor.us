@@ -1,5 +1,6 @@
 ---
 title: "piotrmol.me"
+description: "Old portfolio website of mine."
 repoUrl: "https://github.com/s0rus/piotrmol.me"
 demoUrl: "https://piotrmol-me.vercel.app/"
 ---

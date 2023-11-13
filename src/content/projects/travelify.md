@@ -1,5 +1,6 @@
 ---
 title: "Travelify"
+description: "App that lets you mark out countries that you have visited so far."
 repoUrl: "https://github.com/s0rus/travelify"
 demoUrl: "https://travelify.netlify.app/"
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Ballot"
+description: "App that lets you create simple polls."
 repoUrl: "https://github.com/s0rus/ballot"
 demoUrl: "https://ballot-polls.netlify.app/"
 ---

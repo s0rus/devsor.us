@@ -19,6 +19,7 @@
     "@astrojs/vercel": "^4.0.5",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
+    "@vercel/og": "^0.5.20",
     "astro": "^3.4.4",
     "clsx": "^2.0.0",
     "geist": "^1.0.1",
