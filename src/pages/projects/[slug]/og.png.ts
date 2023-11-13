@@ -15,6 +15,8 @@ export async function GET({ props, request }: Props) {
   const { project } = props;
   const BASE_URL = new URL(request.url).origin;
 
+  console.log(new URL(`${BASE_URL}/fonts/GeistMono-Regular.otf`).href);
+
   const html: ReactElement<any, string | JSXElementConstructor<any>> = {
     key: project.id,
     type: "div",
@@ -49,22 +51,9 @@ export async function GET({ props, request }: Props) {
     height: 600,
     fonts: [
       {
-        name: "Geist",
-        data: await fetch(
-          new URL(
-            `../../../../public/fonts/Geist-Regular.otf`,
-            import.meta.url,
-          ),
-        ).then((res) => res.arrayBuffer()),
-        style: "normal",
-      },
-      {
         name: "GeistMono",
         data: await fetch(
-          new URL(
-            `../../../../public/fonts/GeistMono-Regular.otf`,
-            import.meta.url,
-          ),
+          new URL(`${BASE_URL}/fonts/GeistMono-Regular.otf`).href,
         ).then((res) => res.arrayBuffer()),
         style: "normal",
       },
