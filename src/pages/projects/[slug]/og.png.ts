@@ -9,8 +9,6 @@ interface Props {
   request: Request;
 }
 
-export const prerender = true;
-
 export async function GET({ props, request }: Props) {
   const { project } = props;
   const BASE_URL = new URL(request.url).origin;
