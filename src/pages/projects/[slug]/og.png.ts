@@ -51,7 +51,7 @@ export async function GET({ props, request }: Props) {
       {
         name: "GeistMono",
         data: await fetch(
-          new URL(`${BASE_URL}/fonts/GeistMono-Regular.otf`).href,
+          new URL(`${BASE_URL}/fonts/GeistMono-Regular.ttf`).href,
         ).then((res) => res.arrayBuffer()),
         style: "normal",
       },
