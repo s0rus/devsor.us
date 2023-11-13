@@ -1,5 +1,7 @@
 import { ImageResponse } from "@vercel/og";
 import { getCollection, type CollectionEntry } from "astro:content";
+import fs from "fs";
+import path from "path";
 import type { JSXElementConstructor, ReactElement } from "react";
 import { capitalizeWord } from "../../../lib/utils";
 
@@ -12,6 +14,10 @@ interface Props {
 export async function GET({ props, request }: Props) {
   const { project } = props;
   const BASE_URL = new URL(request.url).origin;
+
+  const GeistMono = fs.readFileSync(
+    path.resolve("./public/fonts/GeistMono-Regular.ttf"),
+  ).buffer;
 
   const html: ReactElement<any, string | JSXElementConstructor<any>> = {
     key: project.id,
@@ -45,12 +51,19 @@ export async function GET({ props, request }: Props) {
   return new ImageResponse(html, {
     width: 1200,
     height: 600,
+    // fonts: [
+    //   {
+    //     name: "GeistMono",
+    //     data: await fetch(
+    //       new URL(`${BASE_URL}/fonts/GeistMono-Regular.ttf`).href,
+    //     ).then((res) => res.arrayBuffer()),
+    //     style: "normal",
+    //   },
+    // ],
     fonts: [
       {
         name: "GeistMono",
-        data: await fetch(
-          new URL(`${BASE_URL}/fonts/GeistMono-Regular.ttf`).href,
-        ).then((res) => res.arrayBuffer()),
+        data: GeistMono,
         style: "normal",
       },
     ],
