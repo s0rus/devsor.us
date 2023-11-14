@@ -10,6 +10,7 @@ import { Icon, type IconKey } from "./icon";
 
 export interface CardLinkProps extends ComponentProps<"a"> {
   title: string;
+  subtitle?: string;
   iconKey?: IconKey;
   followIconKey: IconKey;
   cardProps?: ComponentProps<"div">;
@@ -52,6 +53,7 @@ const followMouseIcon = (
 
 const CardLink = ({
   title,
+  subtitle,
   iconKey,
   followIconKey,
   cardProps,
@@ -101,9 +103,14 @@ const CardLink = ({
       >
         <div className="link-card-content p-6 group-hover:bg-[-10%_0%] sm:p-8">
           <div className="flex h-full flex-col justify-between">
-            <h2 className="break-words font-secondary text-2xl sm:text-4xl">
-              {title}
-            </h2>
+            <div className="flex flex-col gap-4">
+              <h2 className="break-words font-secondary text-2xl sm:text-4xl">
+                {title}
+              </h2>
+              <p className="text-sm text-white/50 transition-colors group-hover:text-white">
+                {subtitle}
+              </p>
+            </div>
             <span className="mt-8 text-white/80 transition-colors duration-[350] group-hover:text-white sm:mt-0">
               {CardIcon && <CardIcon />}
             </span>

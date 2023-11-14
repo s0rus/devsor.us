@@ -2,7 +2,7 @@ import {
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowUpRightIcon,
-  FolderOpenDotIcon,
+  BracesIcon,
   GithubIcon,
   LinkedinIcon,
   type LucideProps,
@@ -39,7 +39,7 @@ export const Icon = {
   ),
   gitHub: GithubIcon,
   linkedIn: LinkedinIcon,
-  projects: FolderOpenDotIcon,
+  braces: BracesIcon,
   star: (props: LucideProps) => (
     <svg
       width="311"
