@@ -15,11 +15,11 @@ export async function GET({ request }: { request: Request }) {
   //   path.resolve("./fonts/GeistMono-Regular.ttf"),
   // ).buffer;
 
-  const font = fetch(
-    new URL("../../public/fonts/GeistMono-Regular.ttf", import.meta.url),
-  ).then((res) => res.arrayBuffer());
+  // const font = fetch(
+  //   new URL("../../public/fonts/GeistMono-Regular.ttf", import.meta.url),
+  // ).then((res) => res.arrayBuffer());
 
-  const GeistMono = await font;
+  // const GeistMono = await font;
 
   const html: ReactElement<any, string | JSXElementConstructor<any>> = {
     key: title,
@@ -28,7 +28,7 @@ export async function GET({ request }: { request: Request }) {
       tw: "w-full h-full flex items-center justify-start relative px-24",
       style: {
         background: "#000000",
-        fontFamily: "GeistMono",
+        // fontFamily: "GeistMono",
         backgroundImage: `url("${origin}/og-base.png")`,
       },
       children: [
@@ -53,13 +53,13 @@ export async function GET({ request }: { request: Request }) {
   return new ImageResponse(html, {
     width: 1200,
     height: 600,
-    fonts: [
-      {
-        name: "GeistMono",
-        data: GeistMono,
-        style: "normal",
-      },
-    ],
+    // fonts: [
+    //   {
+    //     name: "GeistMono",
+    //     data: GeistMono,
+    //     style: "normal",
+    //   },
+    // ],
     headers: { "Content-Type": "image/png" },
   });
 }
