@@ -1,6 +1,4 @@
 import { ImageResponse } from "@vercel/og";
-import fs from "fs";
-import path from "path";
 import type { JSXElementConstructor, ReactElement } from "react";
 
 export const prerender = false;
@@ -13,9 +11,15 @@ export async function GET({ request }: { request: Request }) {
     return new Response("Title parameter is required", { status: 400 });
   }
 
-  const GeistMono = fs.readFileSync(
-    path.resolve("./fonts/GeistMono-Regular.ttf"),
-  ).buffer;
+  // const GeistMono = fs.readFileSync(
+  //   path.resolve("./fonts/GeistMono-Regular.ttf"),
+  // ).buffer;
+
+  const font = fetch(
+    new URL("../../public/fonts/GeistMono-Regular.ttf", import.meta.url),
+  ).then((res) => res.arrayBuffer());
+
+  const GeistMono = await font;
 
   const html: ReactElement<any, string | JSXElementConstructor<any>> = {
     key: title,
