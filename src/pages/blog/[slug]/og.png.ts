@@ -7,7 +7,7 @@ import { capitalizeWord } from "../../../lib/utils";
 
 interface Props {
   params: { slug: string };
-  props: { project: CollectionEntry<"projects"> };
+  props: { project: CollectionEntry<"blog"> };
   request: Request;
 }
 

@@ -1,0 +1,70 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+import readingTime from "reading-time";
+import ArticleLayout from "../../layouts/article-layout.astro";
+import Metadata from "../../lib/metadata.astro";
+import { formatDate, slugify } from "../../lib/utils";
+
+type Props = CollectionEntry<"blog">;
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const blog = await getCollection("blog");
+  return blog.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+const { render, data, body, slug } = Astro.props;
+const { Content, headings } = await render();
+// ? TODO: add description
+const { title, publicationDate } = data;
+
+const BASE_URL = new URL(Astro.request.url).origin;
+---
+
+<ArticleLayout>
+  <Metadata
+    slot="head"
+    title={title}
+    description={"todo"}
+    image={`/og.png?title=${title}`}
+    canonicalUrl={`${BASE_URL}/blog/${slug}/`}
+    type="article"
+  />
+  <div class="grid grid-cols-3 gap-16">
+    <div class="col-span-3 sm:col-span-2">
+      <div class="relative max-w-[65ch]">
+        <h1 class="text-3xl font-bold" id="overview">{title}</h1>
+        <p class="text-white/50">
+          {formatDate(publicationDate)}
+          <span class="mx-1">&bullet;</span>
+          {readingTime(body).text}
+        </p>
+        <div class="blob absolute inset-0 -z-[1] rotate-180 animate-pulse-slow">
+        </div>
+      </div>
+      <div class="my-4 h-1 w-full bg-white/5"></div>
+      <article class="prose prose-invert flex-1">
+        <Content />
+      </article>
+    </div>
+    <div>
+      <nav
+        class="sticky top-10 hidden flex-col gap-2 sm:col-span-1 sm:flex sm:w-full"
+      >
+        <a href="#overview" class="text-lg font-semibold">Overview</a>
+        {
+          headings.map((heading) => (
+            <a href={`#${slugify(heading.text)}`} class="ml-4">
+              {heading.text}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+</ArticleLayout>

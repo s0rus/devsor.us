@@ -7,7 +7,17 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://devsor.us",
-  integrations: [mdx(), sitemap(), tailwind(), react()],
+  integrations: [
+    mdx({
+      shikiConfig: {
+        theme: "poimandres",
+        wrap: false,
+      },
+    }),
+    sitemap(),
+    tailwind(),
+    react(),
+  ],
   server: {
     port: 3001,
   },

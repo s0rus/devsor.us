@@ -1,33 +1,29 @@
 import { ImageResponse } from "@vercel/og";
-import { getCollection, type CollectionEntry } from "astro:content";
 import fs from "fs";
 import path from "path";
 import type { JSXElementConstructor, ReactElement } from "react";
-import { capitalizeWord } from "../../../lib/utils";
 
-interface Props {
-  params: { slug: string };
-  props: { project: CollectionEntry<"projects"> };
-  request: Request;
-}
+export async function GET({ request }: { request: Request }) {
+  const { origin, searchParams } = new URL(request.url);
+  const title = searchParams.get("title");
 
-export async function GET({ props, request }: Props) {
-  const { project } = props;
-  const BASE_URL = new URL(request.url).origin;
+  if (!title) {
+    return new Response("Title parameter is required", { status: 400 });
+  }
 
   const GeistMono = fs.readFileSync(
     path.resolve("./public/fonts/GeistMono-Regular.ttf"),
   ).buffer;
 
   const html: ReactElement<any, string | JSXElementConstructor<any>> = {
-    key: project.id,
+    key: title,
     type: "div",
     props: {
       tw: "w-full h-full flex items-center justify-start relative px-24",
       style: {
         background: "#000000",
         fontFamily: "GeistMono",
-        backgroundImage: `url(${BASE_URL}/og-base.png)`,
+        backgroundImage: `url("${origin}/og-base.png")`,
       },
       children: [
         {
@@ -38,7 +34,7 @@ export async function GET({ props, request }: Props) {
               {
                 type: "div",
                 props: {
-                  children: `Project // ${capitalizeWord(project.data.title)}`,
+                  children: title,
                 },
               },
             ],
@@ -60,12 +56,4 @@ export async function GET({ props, request }: Props) {
     ],
     headers: { "Content-Type": "image/png" },
   });
-}
-
-export async function getStaticPaths() {
-  const projects = await getCollection("projects");
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: { project },
-  }));
 }

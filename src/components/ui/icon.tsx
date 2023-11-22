@@ -1,9 +1,11 @@
 import {
+  AlertTriangleIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowUpRightIcon,
   BracesIcon,
   GithubIcon,
+  InfoIcon,
   LinkedinIcon,
   type LucideProps,
 } from "lucide-react";
@@ -11,6 +13,8 @@ import {
 export type IconKey = keyof typeof Icon;
 
 export const Icon = {
+  alert: AlertTriangleIcon,
+  info: InfoIcon,
   arrowRight: ArrowRightIcon,
   arrowUpRight: ArrowUpRightIcon,
   arrowLeft: ArrowLeftIcon,

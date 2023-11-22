@@ -4,16 +4,16 @@ import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 
 export async function GET(context) {
-  const projects = await getCollection("projects");
+  const blog = await getCollection("blog");
 
   return rss({
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     site: context.site,
-    items: projects.map((project) => ({
-      ...project.data,
-      link: `${ROUTES.projects}/${project.slug}`,
-      pubDate: new Date().toUTCString(),
+    items: blog.map((post) => ({
+      ...post.data,
+      link: `${ROUTES.blog}/${post.slug}`,
+      pubDate: post.data.publicationDate,
     })),
     customData: `<language>en-us</language>`,
   });

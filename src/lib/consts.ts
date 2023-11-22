@@ -11,4 +11,5 @@ export const LINKEDIN_URL = "https://www.linkedin.com/in/piotrmol/" as const;
 export const ROUTES = {
   home: "/",
   projects: "/projects",
+  blog: "/blog",
 } as const;

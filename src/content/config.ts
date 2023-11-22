@@ -9,4 +9,11 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { projects };
+const blog = defineCollection({
+  schema: z.object({
+    title: z.string().min(1),
+    publicationDate: z.string(),
+  }),
+});
+
+export const collections = { projects, blog };

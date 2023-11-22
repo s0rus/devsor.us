@@ -21,6 +21,10 @@
     --font-secondary: "Grimoire";
   }
 
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
     @apply bg-[#040404] font-main text-white;
   }
