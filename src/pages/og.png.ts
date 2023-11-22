@@ -3,6 +3,8 @@ import fs from "fs";
 import path from "path";
 import type { JSXElementConstructor, ReactElement } from "react";
 
+export const prerender = false;
+
 export async function GET({ request }: { request: Request }) {
   const { origin, searchParams } = new URL(request.url);
   const title = searchParams.get("title");
