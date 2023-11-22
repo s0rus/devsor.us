@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry } from "astro:content";
 
+import { getCollection } from "astro:content";
 import readingTime from "reading-time";
 import ArticleLayout from "../../layouts/article-layout.astro";
 import Metadata from "../../lib/metadata.astro";
@@ -8,15 +9,13 @@ import { formatDate, slugify } from "../../lib/utils";
 
 type Props = CollectionEntry<"blog">;
 
-export const prerender = false;
-
-// export async function getStaticPaths() {
-//   const blog = await getCollection("blog");
-//   return blog.map((post) => ({
-//     params: { slug: post.slug },
-//     props: post,
-//   }));
-// }
+export async function getStaticPaths() {
+  const blog = await getCollection("blog");
+  return blog.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
 
 const { render, data, body, slug } = Astro.props;
 const { Content, headings } = await render();
@@ -31,7 +30,7 @@ const BASE_URL = new URL(Astro.request.url).origin;
     slot="head"
     title={title}
     description={"todo"}
-    image={`/og.png?title=${title}`}
+    image={`/blog/${slug}/og.png`}
     canonicalUrl={`${BASE_URL}/blog/${slug}/`}
     type="article"
   />

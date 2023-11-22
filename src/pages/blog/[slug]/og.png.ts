@@ -3,16 +3,15 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import fs from "fs";
 import path from "path";
 import type { JSXElementConstructor, ReactElement } from "react";
-import { capitalizeWord } from "../../../lib/utils";
 
 interface Props {
   params: { slug: string };
-  props: { project: CollectionEntry<"blog"> };
+  props: { post: CollectionEntry<"blog"> };
   request: Request;
 }
 
 export async function GET({ props, request }: Props) {
-  const { project } = props;
+  const { post } = props;
   const BASE_URL = new URL(request.url).origin;
 
   const GeistMono = fs.readFileSync(
@@ -20,7 +19,7 @@ export async function GET({ props, request }: Props) {
   ).buffer;
 
   const html: ReactElement<any, string | JSXElementConstructor<any>> = {
-    key: project.id,
+    key: post.id,
     type: "div",
     props: {
       tw: "w-full h-full flex items-center justify-start relative px-24",
@@ -38,7 +37,7 @@ export async function GET({ props, request }: Props) {
               {
                 type: "div",
                 props: {
-                  children: `Project // ${capitalizeWord(project.data.title)}`,
+                  children: `${post.data.title}`,
                 },
               },
             ],
@@ -63,9 +62,9 @@ export async function GET({ props, request }: Props) {
 }
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects");
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: { project },
+  const blog = await getCollection("blog");
+  return blog.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
   }));
 }
