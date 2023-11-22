@@ -14,7 +14,7 @@ export async function GET({ request }: { request: Request }) {
   }
 
   const GeistMono = fs.readFileSync(
-    path.resolve("./public/fonts/GeistMono-Regular.ttf"),
+    path.resolve("./fonts/GeistMono-Regular.ttf"),
   ).buffer;
 
   const html: ReactElement<any, string | JSXElementConstructor<any>> = {
