@@ -5,6 +5,7 @@ import {
   ArrowUpRightIcon,
   BracesIcon,
   GithubIcon,
+  HashIcon,
   InfoIcon,
   LinkedinIcon,
   type LucideProps,
@@ -15,6 +16,7 @@ export type IconKey = keyof typeof Icon;
 export const Icon = {
   alert: AlertTriangleIcon,
   info: InfoIcon,
+  hash: HashIcon,
   arrowRight: ArrowRightIcon,
   arrowUpRight: ArrowUpRightIcon,
   arrowLeft: ArrowLeftIcon,

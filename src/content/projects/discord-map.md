@@ -2,6 +2,7 @@
 title: "Discord Map"
 description: "App that allowed users from community save their location on a map."
 repoUrl: "https://github.com/s0rus/discord-map"
+weight: 1
 ---
 
 This app's purpose is to give a certain discord community a way to know eachother better

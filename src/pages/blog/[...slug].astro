@@ -3,9 +3,11 @@ import { type CollectionEntry } from "astro:content";
 
 import { getCollection } from "astro:content";
 import readingTime from "reading-time";
+import { components } from "../../components/ui/markdown-overrides/index.astro";
 import ArticleLayout from "../../layouts/article-layout.astro";
+import { ROUTES } from "../../lib/consts";
 import Metadata from "../../lib/metadata.astro";
-import { formatDate, slugify } from "../../lib/utils";
+import { cn, formatDate, slugify } from "../../lib/utils";
 
 type Props = CollectionEntry<"blog">;
 
@@ -19,8 +21,7 @@ export async function getStaticPaths() {
 
 const { render, data, body, slug } = Astro.props;
 const { Content, headings } = await render();
-// ? TODO: add description
-const { title, publicationDate } = data;
+const { title, publicationDate, summary } = data;
 
 const BASE_URL = new URL(Astro.request.url).origin;
 ---
@@ -29,11 +30,15 @@ const BASE_URL = new URL(Astro.request.url).origin;
   <Metadata
     slot="head"
     title={title}
-    description={"todo"}
+    description={summary}
     image={`/blog/${slug}/og.png`}
     canonicalUrl={`${BASE_URL}/blog/${slug}/`}
     type="article"
   />
+  <nav class="mb-8 inline-flex gap-4 font-secondary">
+    <a href={ROUTES.home} class="hover:underline">home</a>
+    <a href={ROUTES.blog} class="hover:underline">blog</a>
+  </nav>
   <div class="grid grid-cols-3 gap-16">
     <div class="col-span-3 sm:col-span-2">
       <div class="relative max-w-[65ch]">
@@ -48,17 +53,24 @@ const BASE_URL = new URL(Astro.request.url).origin;
       </div>
       <div class="my-4 h-1 w-full bg-white/5"></div>
       <article class="prose prose-invert flex-1">
-        <Content />
+        <Content components={components} />
       </article>
     </div>
     <div>
       <nav
         class="sticky top-10 hidden flex-col gap-2 sm:col-span-1 sm:flex sm:w-full"
       >
-        <a href="#overview" class="text-lg font-semibold">Overview</a>
+        <a href="#overview" class="text-lg font-bold">Overview</a>
         {
           headings.map((heading) => (
-            <a href={`#${slugify(heading.text)}`} class="ml-4">
+            <a
+              href={`#${slugify(heading.text)}`}
+              class={cn(
+                "text-white/40 transition-colors hover:text-white",
+                heading.depth === 2 && "ml-4 font-semibold",
+                heading.depth === 3 && "ml-8 font-medium",
+              )}
+            >
               {heading.text}
             </a>
           ))
@@ -66,4 +78,22 @@ const BASE_URL = new URL(Astro.request.url).origin;
       </nav>
     </div>
   </div>
+  <footer class="mt-12 py-4 text-white/10">
+    piotr mól &copy; {new Date().getFullYear()}
+  </footer>
 </ArticleLayout>
+
+<script>
+  import { toast } from "sonner";
+
+  const headings = document.querySelectorAll("[data-copy]");
+
+  headings.forEach((heading) => {
+    heading.addEventListener("click", () => {
+      const href = heading.getAttribute("data-copy");
+      if (href) {
+        navigator.clipboard.writeText(href).then(() => toast.success("Copied"));
+      }
+    });
+  });
+</script>

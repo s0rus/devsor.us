@@ -7,6 +7,7 @@ import { ROUTES } from "../../lib/consts";
 import { Image } from "astro:assets";
 import glossyCube from "../../assets/glossy_cube.webp";
 import { Icon } from "../../components/ui/icon";
+import { components } from "../../components/ui/markdown-overrides/index.astro";
 import ArticleLayout from "../../layouts/article-layout.astro";
 import Metadata from "../../lib/metadata.astro";
 
@@ -87,7 +88,7 @@ export const prerender = true;
   </div>
   <div class="mt-2"></div>
   <article class="prose prose-invert">
-    <Content />
+    <Content components={components} />
   </article>
   <Footer>
     <Image

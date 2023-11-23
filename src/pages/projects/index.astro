@@ -33,21 +33,23 @@ import { Icon } from "../../components/ui/icon";
     class="flex flex-col items-stretch justify-between gap-4 sm:flex-row sm:flex-wrap"
   >
     {
-      projects.map((project) => (
-        <li class="w-full sm:w-[calc(50%-16px)]">
-          <CardLink
-            className="h-full"
-            title={project.data.title}
-            subtitle={project.data.description}
-            cardProps={{
-              className: "h-full",
-            }}
-            followIconKey="arrowRight"
-            href={`${ROUTES.projects}/${project.slug}`}
-            client:load
-          />
-        </li>
-      ))
+      projects
+        .sort((a, b) => b.data.weight - a.data.weight)
+        .map((project) => (
+          <li class="w-full sm:w-[calc(50%-16px)]">
+            <CardLink
+              className="h-full"
+              title={project.data.title}
+              subtitle={project.data.description}
+              cardProps={{
+                className: "h-full",
+              }}
+              followIconKey="arrowRight"
+              href={`${ROUTES.projects}/${project.slug}`}
+              client:load
+            />
+          </li>
+        ))
     }
   </ul>
   <Footer>

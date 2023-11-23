@@ -1,3 +1,7 @@
+---
+import { ToastProvider } from "../lib/toast-provider";
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,9 +12,7 @@
       class="max-w-screen container relative flex h-screen max-h-screen flex-col pt-8"
     >
       <slot />
-      <footer class="mt-12 py-4 text-white/10">
-        piotr mól &copy; {new Date().getFullYear()}
-      </footer>
+      <ToastProvider client:load />
     </main>
   </body>
 </html>
