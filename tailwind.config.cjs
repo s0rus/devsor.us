@@ -11,6 +11,7 @@ module.exports = {
       },
       fontFamily: {
         main: ["var(--font-main)", ...fontFamily.sans],
+        mono: ["var(--font-mono)", ...fontFamily.sans],
         secondary: ["var(--font-secondary)", ...fontFamily.sans],
       },
       container: {

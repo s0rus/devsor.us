@@ -8,6 +8,7 @@ import ArticleLayout from "../../layouts/article-layout.astro";
 import { ROUTES } from "../../lib/consts";
 import Metadata from "../../lib/metadata.astro";
 import { cn, formatDate, slugify } from "../../lib/utils";
+import { Image } from "astro:assets";
 
 type Props = CollectionEntry<"blog">;
 
@@ -21,7 +22,7 @@ export async function getStaticPaths() {
 
 const { render, data, body, slug } = Astro.props;
 const { Content, headings } = await render();
-const { title, publicationDate, summary } = data;
+const { title, publicationDate, summary, cover } = data;
 
 const BASE_URL = new URL(Astro.request.url).origin;
 ---
@@ -48,10 +49,15 @@ const BASE_URL = new URL(Astro.request.url).origin;
           <span class="mx-1">&bullet;</span>
           {readingTime(body).text}
         </p>
-        <div class="blob absolute inset-0 -z-[1] rotate-180 animate-pulse-slow">
-        </div>
       </div>
       <div class="my-4 h-1 w-full bg-white/5"></div>
+      <Image
+        src={cover}
+        alt={`${title} post cover image`}
+        quality={100}
+        class="h-auto w-full"
+        loading="eager"
+      />
       <article class="prose prose-invert flex-1">
         <Content components={components} />
       </article>

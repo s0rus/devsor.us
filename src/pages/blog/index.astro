@@ -1,15 +1,15 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+import glossyKnot from "../../assets/glossy_knot.webp";
 import Footer from "../../components/footer.astro";
 import CardLink from "../../components/ui/card-link";
+import { Icon } from "../../components/ui/icon";
 import ProjectsListLayout from "../../layouts/project-list-layout.astro";
 import { ROUTES } from "../../lib/consts";
+import { formatDate } from "../../lib/utils";
 
 const blog = await getCollection("blog");
-
-import { Image } from "astro:assets";
-import glossyBall from "../../assets/glossy_ball.webp";
-import { Icon } from "../../components/ui/icon";
 ---
 
 <ProjectsListLayout>
@@ -29,29 +29,39 @@ import { Icon } from "../../components/ui/icon";
     <div class="blob absolute inset-0 -z-[1] rotate-180 animate-pulse-slow">
     </div>
   </div>
-  <ul
-    class="flex flex-col items-stretch justify-between gap-4 sm:flex-row sm:flex-wrap"
-  >
+  <ul class="flex flex-col gap-4">
     {
       blog.map((post) => (
-        <li class="w-full sm:w-[calc(50%-16px)]">
-          <CardLink
-            className="h-full"
-            title={post.data.title}
-            cardProps={{
-              className: "h-full",
-            }}
-            followIconKey="arrowRight"
-            href={`${ROUTES.blog}/${post.slug}`}
-            client:load
-          />
-        </li>
+        <>
+          <a href={`/blog/${post.slug}`} class="group">
+            <li class="flex w-full flex-col gap-8 md:flex-row">
+              <div class="group w-full overflow-hidden rounded-md border border-white/5 bg-[#040404] md:max-w-sm">
+                <Image
+                  src={post.data.cover}
+                  alt={`${post.data.title} post cover image`}
+                  quality={100}
+                  class="h-auto w-full transition duration-500 group-hover:scale-125"
+                  loading="eager"
+                />
+              </div>
+              <div class="flex flex-col">
+              <span class="text-white/50 text-xs">{formatDate(post.data.publicationDate)}</span>
+                <h2 class="font-mono text-xl font-bold sm:text-lg lg:text-2xl mt-1 mb-2">
+                  {post.data.title}
+                </h2>
+                <p class="text-base text-white/60 sm:text-sm lg:text-base">
+                  {post.data.summary}
+              </div>
+            </li>
+          </a>
+          <div class="my-4 h-0.5 w-full bg-white/5" />
+        </>
       ))
     }
   </ul>
-  <Footer>
+    <Footer>
     <Image
-      src={glossyBall}
+      src={glossyKnot}
       alt="Glossy ball"
       loading="eager"
       class="pointer-events-none animate-float sm:mt-4"
@@ -59,7 +69,7 @@ import { Icon } from "../../components/ui/icon";
       height={102}
       slot="image"
     />
-    <Icon.sparklyCircleTilted
+    <Icon.star
       className="h-1/3 w-1/3 text-white/10"
       slot="background"
     />

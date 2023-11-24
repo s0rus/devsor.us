@@ -13,11 +13,15 @@ const projects = defineCollection({
 });
 
 const blog = defineCollection({
-  schema: z.object({
-    title: z.string().min(1),
-    publicationDate: z.string(),
-    summary: z.string().min(1),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string().min(1),
+      publicationDate: z.string(),
+      summary: z.string().min(1),
+      cover: image().refine((img) => img.width >= 1000, {
+        message: "Cover image must be at least 1000px wide!",
+      }),
+    }),
 });
 
 export const collections = { projects, blog };
