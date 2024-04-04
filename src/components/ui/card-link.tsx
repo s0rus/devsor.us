@@ -90,6 +90,7 @@ const CardLink = ({
     <a
       {...rest}
       className={cn("group block focus:outline-none focus:ring", className)}
+      title={title}
     >
       <div
         ref={cardRef}
