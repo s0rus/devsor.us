@@ -55,7 +55,7 @@ export default function Home() {
         <Contact />
       </main>
       <footer className="text-muted mt-auto flex w-full flex-col gap-y-2 text-xs">
-        <span>pm @ {new Date().getFullYear()} cwlstn.</span>
+        <span>pm &copy; {new Date().getFullYear()} cwlstn.</span>
       </footer>
     </div>
   );
