@@ -44,7 +44,7 @@ export default function Home() {
           />
         </div>
         <p className="mt-4 text-justify font-mono text-base leading-none tracking-tight">
-          sometimes i create something somewhat useful. i use nvim btw.
+          sometimes i somehow create something somewhat useful. i use nvim btw.
         </p>
         <section className="mt-4 flex w-full flex-col gap-y-2">
           <h2 className="text-muted scroll-m-20 font-semibold tracking-tight">
