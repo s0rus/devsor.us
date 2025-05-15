@@ -1,10 +1,12 @@
+import { motion } from "motion/react";
+
 type Project = {
   name: string;
   description: string;
   url: string;
 };
 
-const PROJECTS: Project[] = [
+export const PROJECTS: Project[] = [
   {
     name: "baselinker-js",
     description: "type-safe client for baselinker",
@@ -32,10 +34,20 @@ export function Projects() {
   return (
     <ul className="flex flex-col gap-y-1">
       {PROJECTS.map((project, idx) => (
-        <li key={project.name} className="flex flex-row items-start gap-x-1">
+        <motion.li
+          key={project.name}
+          className="flex flex-row items-start gap-x-1"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "keyframes",
+            ease: "easeInOut",
+            delay: 0.12 * (4 + idx),
+          }}
+        >
           <span className="text-muted font-mono text-xs">{idx}.</span>
           <Project project={project} />
-        </li>
+        </motion.li>
       ))}
     </ul>
   );

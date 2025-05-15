@@ -1,11 +1,21 @@
+"use client";
+
 import { Contact } from "@/components/contact";
-import { Projects } from "@/components/projects";
-import Image from "next/image";
+import { PROJECTS, Projects } from "@/components/projects";
+import { motion } from "motion/react";
 
 export default function Home() {
   return (
     <div className="flex h-full min-h-screen w-full max-w-md flex-col px-4 py-8 md:px-8">
-      <nav>
+      <motion.nav
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          type: "keyframes",
+          ease: "easeInOut",
+          delay: 0,
+        }}
+      >
         <ul className="flex flex-row items-baseline gap-x-2">
           <li>
             <a
@@ -29,34 +39,88 @@ export default function Home() {
             </a>
           </li>
         </ul>
-      </nav>
+      </motion.nav>
       <main>
-        <div className="flex flex-row items-baseline justify-between gap-x-2">
-          <h1 className="mt-1 flex-1 text-left text-6xl leading-none font-semibold tracking-tight">
+        <motion.div
+          className="flex flex-row items-baseline gap-x-8"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "keyframes",
+            ease: "easeInOut",
+            delay: 0.12 * 1,
+          }}
+        >
+          <h1 className="mt-1 text-left text-6xl leading-none font-semibold tracking-tight">
             piotr mól
           </h1>
-          <Image
-            src="/assets/pm.gif"
-            alt="piotr mól"
-            width={100}
-            height={100}
-            unoptimized
-          />
-        </div>
-        <p className="mt-4 text-justify font-mono text-base leading-none tracking-tight">
+          <svg
+            width="420"
+            height="280"
+            viewBox="0 0 420 280"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-auto w-12"
+          >
+            <path
+              d="M0 140L70.0165 70L0 0H140.033V140L0 280V140Z"
+              fill="currentColor"
+            />
+            <path d="M279.812 0V139.779L140 0L279.812 0Z" fill="currentColor" />
+            <path d="M419.812 0V139.779L280 0L419.812 0Z" fill="currentColor" />
+          </svg>
+        </motion.div>
+        <motion.p
+          className="mt-4 text-justify font-mono text-base leading-none tracking-tight"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "keyframes",
+            ease: "easeInOut",
+            delay: 0.12 * 2,
+          }}
+        >
           sometimes i somehow create something somewhat useful. i use nvim btw.
-        </p>
+        </motion.p>
         <section className="mt-4 flex w-full flex-col gap-y-2">
-          <h2 className="text-muted scroll-m-20 font-semibold tracking-tight">
+          <motion.h2
+            className="text-muted scroll-m-20 font-semibold tracking-tight"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "keyframes",
+              ease: "easeInOut",
+              delay: 0.12 * 3,
+            }}
+          >
             projects:
-          </h2>
+          </motion.h2>
           <Projects />
         </section>
-        <Contact />
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "keyframes",
+            ease: "easeInOut",
+            delay: 0.12 * (5 + PROJECTS.length),
+          }}
+        >
+          <Contact />
+        </motion.div>
       </main>
-      <footer className="text-muted mt-auto flex w-full flex-col gap-y-2 text-xs">
+      <motion.footer
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          type: "keyframes",
+          ease: "easeInOut",
+          delay: 0.12 * (6 + PROJECTS.length),
+        }}
+        className="text-muted mt-auto flex w-full flex-col gap-y-2 text-xs"
+      >
         <span>pm &copy; {new Date().getFullYear()} cwlstn.</span>
-      </footer>
+      </motion.footer>
     </div>
   );
 }
