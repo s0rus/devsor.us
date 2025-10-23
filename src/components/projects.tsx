@@ -28,6 +28,12 @@ export const PROJECTS: Project[] = [
     description: "landing page for agrogust.pl",
     url: "https://agrogust.pl",
   },
+  {
+    name: "live-folder",
+    description:
+      "proof-of-concept of browser extension that automatically puts your github pull requests into a bookmark folder",
+    url: "https://github.com/s0rus/live-folder",
+  },
 ];
 
 export function Projects() {

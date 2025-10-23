@@ -1,6 +1,5 @@
 "use client";
 
-import { Contact } from "@/components/contact";
 import { PROJECTS, Projects } from "@/components/projects";
 import { motion } from "motion/react";
 
@@ -97,17 +96,6 @@ export default function Home() {
           </motion.h2>
           <Projects />
         </section>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            type: "keyframes",
-            ease: "easeInOut",
-            delay: 0.12 * (5 + PROJECTS.length),
-          }}
-        >
-          <Contact />
-        </motion.div>
       </main>
       <motion.footer
         initial={{ opacity: 0, y: 10 }}
@@ -115,7 +103,7 @@ export default function Home() {
         transition={{
           type: "keyframes",
           ease: "easeInOut",
-          delay: 0.12 * (6 + PROJECTS.length),
+          delay: 0.12 * (5 + PROJECTS.length),
         }}
         className="text-muted mt-auto flex w-full flex-col gap-y-2 text-xs"
       >
